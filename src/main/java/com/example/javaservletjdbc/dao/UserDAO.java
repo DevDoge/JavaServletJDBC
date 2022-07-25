@@ -136,7 +136,7 @@ public class UserDAO {
 
             pstm.setString(1, user.getNome());
             pstm.setString(2, user.getEmail());
-            pstm.setString(3, user.getEmail());
+            pstm.setString(3, user.getCountry());
             pstm.setInt(4, user.getId());
 
             rowUpdated = pstm.executeUpdate() > 0;
