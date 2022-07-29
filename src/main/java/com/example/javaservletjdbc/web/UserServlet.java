@@ -23,7 +23,7 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         List<User> listUser = userDAO.selectAllUsers();
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("list-user.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -43,7 +43,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void insertForm(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String country = request.getParameter("country");
@@ -61,7 +61,7 @@ public class UserServlet extends HttpServlet {
 
         User updatedUser = new User(id, nome, email, country);
         userDAO.updateUser(updatedUser);
-        response.sendRedirect("liist");
+        response.sendRedirect("list");
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)
